@@ -10,45 +10,53 @@ var upperletters
 var symbols
 var numbers1
 var arrayinclude = []
-var generatedpassword
+var generatedpassword = ""
 
 function criteria () {
   length = prompt("how long do you want your password to be?")
+  //min password length
   if (length < 8) {
     alert("Password length needs to be at least 8 characters long");
     criteria();
   }
+  //max password length
   else if (length > 50) {
     alert("Password length needs to be at shorter than 50 characters long");
     criteria();
   }
+  //resetting generated password if generate password is clicked again
+  generatedpassword = ""
   return length
 }
 
+//determine  if lower letters used
 function criteriaLower() {
   lowerletters = confirm("do you want to have lower letters?");
 return lowerletters;
 }
 
+//determine if captial letters used
 function criteriaUpper() {
   upperletters = confirm("do you want to have upper letters?");
 return upperletters;
   
 }
 
+//determine if numbers are used
 function criterianumbers() {
   numbers1 = confirm("do you want to have numbers?");
 return numbers1;
   
 }
 
+//determine if symbols are used
 function criteriaSymbols() {
   symbols = confirm("do you want to have symbols?");
 return symbols;
   
 }
 
-
+//using prompts to determine which characters are used in password
 function createpassword () {
 criteria();
 criteriaLower();
@@ -57,15 +65,19 @@ criterianumbers();
 criteriaSymbols();
 
 console.log(lowerletters, upperletters, numbers1, symbols)
+//if lowercase = true
 if (lowerletters) {
   arrayinclude = arrayinclude.concat(alphabet);
 }
+//if uppercase = true
 if (upperletters) {
     arrayinclude = arrayinclude.concat(Ualphabet);
   }
+  //if uppercase = true
 if (numbers1) {
   arrayinclude = arrayinclude.concat(numbers);
   }
+  //if uppercase = true
 if (symbols) {
   arrayinclude = arrayinclude.concat(special);
 }
@@ -75,8 +87,8 @@ for (i = 0; i < length; i++) {
   }
   return generatedpassword
 }
-
 console.log(generatedpassword)
+
 // Write password to the #password input
 function writePassword() {
   var password = createpassword();
